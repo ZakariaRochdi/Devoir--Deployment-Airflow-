@@ -1,0 +1,17 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  flask-vgg16:
+    build: .
+    container_name: vgg16_api_container
+    ports:
+      - "3000:3000"
+      
+    # LA SECTION VOLUME DEMANDÉE (pour sauver les fichiers sur la machine hôte)
+    # Les fichiers sauvegardés par app.py dans /app/images iront dans ./uploaded_images sur votre PC
+    volumes:
+      - ./uploaded_images:/app/images
+      
+    restart: always
